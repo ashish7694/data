@@ -1,0 +1,60 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Page Title</title>
+<!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+
+   <!-- Custom fonts for this template-->
+   <link href="{% static 'css/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+   <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap4.min.css">
+   <link
+       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+       rel="stylesheet">
+   <link href={% static "adminpanel/css/styles.css" %} rel="stylesheet" />
+   <!-- Custom styles for this template-->
+   <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+   <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+</head>
+<body>
+<div class="container text-center pt-5">
+<h1> welcome in dataflowgroup</h1>
+<a href="{% url 'logout' %}" class="btn btn-primary">Logout</a>
+
+</div>
+<div>
+    <style>
+        .custom-file-upload {
+            border: 1px solid #ccc;
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+        
+    </style>
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <form action="" method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form">
+                <div class="col-md-12"><label class="labels">Name </label><input type="text" value="{{row.name}}" name="Name" class="form-control" placeholder=""></div>
+                <div class="col-md-12"><label class="labels">Gender </label><input type="text" value="{{row.gender}}" name="Gender" class="form-control" placeholder=""></div>
+                <div class="col-md-12"><label class="form-label" for="customFile">issue_Image</label><input type="file" value="{{row.issues_image}}" name="Image" class="form-control" id="customFile" /></div>
+                <div class="col-md-12"><label class="labels">Issues</label><input type="text" name="Issues" value="{{row.issues}}" rows="5" class="form-control"></div>
+                <div class="col-md-12"><label class="labels">Comments</label><input type="text" name="Comments" value="{{row.comments}}" rows="5" class="form-control"></div>
+                <div class="text-center"><button class="btn btn-primary mt-5 px-5 py-2 " type="submit" name="submit">Update</button></div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
